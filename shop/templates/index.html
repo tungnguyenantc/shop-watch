@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% block message %}
+<div class="alert alert-primary alert-dismissible fade show anhien loginAlertSuccess" role="alert">
+  <strong>Login success!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+      
+{% endblock message %}
+
+{% block content %}
+<div class="container ">
+    <div class="row">
+        <h1 class='mx-auto' >Shop Watch</h1>
+    </div>
+    
+    <div class="row mb-10">
+        
+        {% for product in products %}
+        <div class="col-md-4 mb-3">
+          <div class="card text-left">
+            <img class="card-img-top" src="{{ product.image.url }}" alt="">
+            <div class="card-body">
+              <h6 class="card-title text-center">{{ product.name }}</h6>
+              <p class="card-text text-center text-danger">{{ product.price|intcomma }} đ</p>
+              <button type='button' class="btn btn-primary btn-block">Add To Cart</button>
+            </div>
+          </div>
+      </div>
+        {% endfor %}
+          
+       
+        
+    </div>
+    
+</div>
+{% endblock content %}
+
+
+{% block js %}
+  <script src="{% static 'js/nav.js' %}"></script>
+  
+{% endblock js %}
