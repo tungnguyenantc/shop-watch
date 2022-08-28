@@ -20,13 +20,13 @@
         <h1 class='mx-auto' >Shop Watch</h1>
     </div>
     
-    <div class="row mb-10">
+    <div class="row mb-10 shopWatch">
         
         {% for product in products %}
         <div class="col-md-4 mb-3">
           <div class="card text-left">
             <img class="card-img-top" src="{{ product.image.url }}" alt="">
-            <div class="card-body">
+            <div class="card-body" data-id={{product.id}}>
               <h6 class="card-title text-center">{{ product.name }}</h6>
               <p class="card-text text-center text-danger">{{ product.price|intcomma }} đ</p>
               <button type='button' class="btn btn-primary btn-block">Add To Cart</button>
@@ -45,5 +45,6 @@
 
 {% block js %}
   <script src="{% static 'js/nav.js' %}"></script>
+  <script src="{% static 'js/cart.js' %}"></script>
   
 {% endblock js %}

@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0 ">
   <div class="container">
-    <a href="index.html" class="navbar-brand">Watch</a>
+    <a href="/" class="navbar-brand">Watch</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav">
         <li class="nav-item px-2">
-          <a href="index.html" class="nav-link active">Dashboard</a>
+          <a href="/" class="nav-link active">Dashboard</a>
         </li>
 
       </ul>
@@ -45,7 +45,7 @@
         <li class="nav-item">
 
           <a href='#' class="nav-link">
-            <i class="fa-solid fa-cart-shopping"></i> <span class="badge badge-light">0</span>
+            <i class="fa-solid fa-cart-shopping"></i> <span class="badge badge-light">{{ cart|length }}</span>
           </a>
         </li>
       </ul>
