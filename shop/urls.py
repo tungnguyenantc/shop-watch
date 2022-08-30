@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import index, login_view, logout_view
 
+app_name = 'shop'
+
 urlpatterns = [
     path("", index, name="home"),
     path("login", login_view, name="login"),

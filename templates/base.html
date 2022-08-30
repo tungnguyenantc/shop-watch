@@ -16,6 +16,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+  <style>
+    body{
+      background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    }
+  </style>
+  
   <script>
     function getCookie(name) {
       let cookieValue=null;
@@ -45,16 +52,19 @@
 </head>
 
 <body>
-  {% include 'navbar.html' %}
+  <div>
+    {% include 'navbar.html' %}
 
-  <div class="container mt-2">
-    {% block message %}
-
-    {% endblock message %}
+    <div class="container mt-2">
+      {% block message %}
+  
+      {% endblock message %}
+    </div>
+  
+  
+    {% block content %} {% endblock content %}
   </div>
-
-
-  {% block content %} {% endblock content %}
+  
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

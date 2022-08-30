@@ -2,6 +2,7 @@ const shopWatch = document.querySelector(".shopWatch");
 const totalCart = document.querySelector(".badge-light");
 const url_add = "cart/";
 
+// index cart
 shopWatch.addEventListener("click", (e) => {
   const target = e.target;
   if (target.classList.contains("btn-block")) {

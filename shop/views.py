@@ -30,9 +30,9 @@ def login_view(request):
         else:
             return JsonResponse({'success': False})
 
-    return redirect('home')
+    return redirect(request.GET['next'] if 'next' in request.GET else 'shop:home')
 
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect(request.GET['next'] if 'next' in request.GET else 'shop:home')

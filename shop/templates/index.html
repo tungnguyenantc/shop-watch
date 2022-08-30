@@ -27,9 +27,14 @@
           <div class="card text-left">
             <img class="card-img-top" src="{{ product.image.url }}" alt="">
             <div class="card-body" data-id={{product.id}}>
-              <h6 class="card-title text-center">{{ product.name }}</h6>
+              <h6 class="card-title text-center">
+                <a href="{% url 'cart-detail' product.id %}">
+                  {{ product.name }}
+                </a>
+ 
+              </h6>
               <p class="card-text text-center text-danger">{{ product.price|intcomma }} đ</p>
-              <button type='button' class="btn btn-primary btn-block">Add To Cart</button>
+              <button type='button' class="btn btn-outline-primary btn-block">Add To Cart</button>
             </div>
           </div>
       </div>

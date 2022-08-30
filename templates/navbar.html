@@ -29,7 +29,7 @@
         </li>
 
         <li class="nav-item">
-          <a href='{% url "logout" %}' class="nav-link">
+          <a href='{% url "shop:logout" %}?next={{request.path}}' class="nav-link">
             <i class="fa-solid fa-user"></i> Logout
           </a>
         </li>
@@ -44,7 +44,7 @@
 
         <li class="nav-item">
 
-          <a href='#' class="nav-link">
+          <a href='{% url "cart" %}' class="nav-link">
             <i class="fa-solid fa-cart-shopping"></i> <span class="badge badge-light">{{ cart|length }}</span>
           </a>
         </li>
@@ -70,7 +70,7 @@
 
 
 
-        <form method='POST' action={% url 'login' %}>
+        <form method='POST'>
           {% csrf_token %}
           <div class="form-group">
             <label for="title">User</label>
@@ -87,8 +87,8 @@
             </div>
           </div>
 
-          <button class="btn btn-outline-primary btn-block btn-login">Login</button>
-
+          <a href="{% url 'shop:login' %}?next={{request.path}}" class="btn btn-outline-primary btn-block btn-login">Login</a>
+         
         </form>
       </div>
 

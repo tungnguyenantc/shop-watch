@@ -1,22 +1,25 @@
-let html = `<li class="nav-item dropdown mr-3">
-<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-  <i class="fas fa-user"></i> Wellcome 
-</a>
-<div class="dropdown-menu">
-  <a href="profile.html" class="dropdown-item">
-    <i class="fas fa-user-circle"></i> Profile
+let html = function (path) {
+  return `<li class="nav-item dropdown mr-3">
+  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+    <i class="fas fa-user"></i> Wellcome
   </a>
-  <a href="settings.html" class="dropdown-item">
-    <i class="fas fa-cog"></i> Settings
-  </a>
-</div>
-</li>
+  <div class="dropdown-menu">
+    <a href="profile.html" class="dropdown-item">
+      <i class="fas fa-user-circle"></i> Profile
+    </a>
+    <a href="settings.html" class="dropdown-item">
+      <i class="fas fa-cog"></i> Settings
+    </a>
+  </div>
+  </li>
 
-<li class="nav-item">
-<a href='{% url "logout" %}' class="nav-link">
-  <i class="fa-solid fa-user"></i> Logout
-</a>
-</li>`;
+  <li class="nav-item">
+  <a href='/logout?next=${path}' class="nav-link">
+    <i class="fa-solid fa-user"></i> Logout
+  </a>
+  </li>`;
+};
+
 let alert_user_pass = `<div class="alert alert-warning" role="alert">
 Username or Paswword incorrect
 </div>`;
@@ -46,7 +49,8 @@ document.querySelector(".btn-login").addEventListener("click", (e) => {
     return false;
   }
 
-  const url = "login";
+  const url = "/login";
+
   fetch(url, {
     method: "POST",
     credentials: "same-origin",
@@ -60,10 +64,12 @@ document.querySelector(".btn-login").addEventListener("click", (e) => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(url);
       if (data.success) {
         console.log("success");
         liLogin.closest("li").remove();
-        ulLoginLogout.insertAdjacentHTML("afterbegin", html);
+        const html_path = html(window.location.pathname);
+        ulLoginLogout.insertAdjacentHTML("afterbegin", html_path);
         // remove modal
         loginModal.remove();
         // remove lớp phủ modal

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <div class="card text-left mb-5">
+                <div class="card-header text-center text-primary">{{ product.name }}</div>
+                <img class="card-img-top" style="height:300px ;" src="{{ product.image.url }}" alt="">
+                <div class="card-body" data-id={{product.id}}>
+                    <h4 class="card-title text-center text-white bg-primary rounded">{{ product.price|intcomma }} đ</h4>
+                    <p class="card-text load text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                        numquam, odio ab omnis cumque impedit nobis harum quasi explicabo veritatis ea, sapiente fugiat.
+                        Sapiente in qui sed debitis numquam a.
+                        Numquam, soluta accusantium. Ipsa dolores laborum in accusantium enim eius optio quae atque
+                        ducimus facilis, eaque ea, perspiciatis nostrum similique qui accusamus libero mollitia
+                        provident, tempore nobis impedit hic nisi!
+
+                    </p>
+                    <button type='button' class="btn btn-outline-primary btn-block addCartDetail">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block js %}
+<script src="{% static 'js/cart-detail.js' %}"></script>
+
+
+{% endblock js %}
