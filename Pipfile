@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 pillow = "*"
+python-benedict = "*"
 
 [dev-packages]
 autopep8 = "*"

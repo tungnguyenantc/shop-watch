@@ -24,32 +24,34 @@
 
 
                 <div class="card-body">
-                    <h3>Shopping Cart: {{ total }} item</h3>
+                    <h3>Shopping Cart: </h3>
 
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Product</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Price</th>
+                                <th scope="col" class='pl-5'>Quantity</th>
+                                <th scope="col" class='pl-4'>Price</th>
                                 <th scope="col">Money</th>
+                                <th scope="col">Remove</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {% for cart in cart %}
-                            <tr>
+                            <tr data-id={{ cart.id }}>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ cart.product.name }}</td>
+                                <td>{{ cart.name }}</td>
                                 <td>
-                                    <a href="#" class='btn btn-primary btn-sm'><span>-</span></a>
-                                    <input disabled class='w-25 text-center border-0' type="text"
+                                    <button type='button' class='decrement btn btn-primary '>-</button>
+                                    <input min="1" disabled class='w-25 text-center border-0 quantity' type="text"
                                         value="{{ cart.quantity }}">
-                                    <a href="#" class='btn btn-primary btn-sm'><span>+</span></a>
+                                    <button type='button' class='increment btn btn-primary '>+</button>
                                 </td>
-                                <td>{{ cart.price|intcomma }}</td>
-                                <td>{{ cart.total_price|intcomma }}</td>
+                                <td class='price'>{{ cart.price|floatformat:0|intcomma }}</td>
+                                <td class='money'>{{ cart.total_price }}</td>
+                                <td><i class="fa-solid fa-trash text-danger"></i></td>
                             </tr>
                             {% endfor %}
 
@@ -60,7 +62,9 @@
 
                 </div>
                 <div class="card-footer text-muted">
-                    <p style='float: right;'>Total: {{ cart.get_total_price|intcomma }} đ</p>
+                    <h3 class='text-right'>Total:
+                        <span class="badge badge-primary">{{cart.get_total_price }}</span> 
+                    </h3>
                 </div>
             </div>
         </div>
@@ -70,4 +74,5 @@
 
 {% block js %}
 <script src="{% static 'js/nav.js' %}"></script>
+<script src="{% static 'js/cart_update.js' %}"></script>
 {% endblock js %}
