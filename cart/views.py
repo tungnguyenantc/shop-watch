@@ -89,3 +89,15 @@ def cart_clear(request):
     cart = Cart(request)
     cart.clear()
     return redirect('shop:home')
+
+
+def cart_remove(request):
+    cart = Cart(request)
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        data = json.load(request)
+        product_id = data.get('productId')
+        cart.remove(product_id=product_id)
+        totalTongTien = sum(
+            [int(i['total_price'].split('.')[0]) for i in cart])
+        return JsonResponse({'total': len(cart), 'totalTongTien': totalTongTien})
+    return render(request, 'cart/templates/cart.html')

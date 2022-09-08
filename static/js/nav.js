@@ -24,6 +24,14 @@ let alert_user_pass = `<div class="alert alert-warning" role="alert">
 Username or Paswword incorrect
 </div>`;
 const loginModal = document.querySelector(".loginModal");
+const price_index = document.querySelectorAll(".price_index");
+for (const i of price_index) {
+  const total = i.innerText.split(".")[0];
+  i.innerText = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(total);
+}
 
 document.querySelector(".btn-login").addEventListener("click", (e) => {
   e.preventDefault();

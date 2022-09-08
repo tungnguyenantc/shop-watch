@@ -29,9 +29,9 @@ class Cart(object):
         # mark the session as 'modified' to make sure it gets saved
         self.session.modified = True
 
-    def remove(self, product):
+    def remove(self, product_id):
 
-        product_id = str(product.id)
+        # product_id = str(product.id)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
@@ -56,8 +56,6 @@ class Cart(object):
         Count all items in the cart.
         '''
         return sum(item['quantity'] for item in self.cart.values())
-
-    
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())

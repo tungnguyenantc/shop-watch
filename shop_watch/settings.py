@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'easy_thumbnails',
+    'crispy_forms',
     'shop',
     'cart',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +142,9 @@ CART_SESSION_ID = 'cart'
 
 
 LOGIN_URL = 'shop:login'
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (50, 50), 'crop': True},
+    },
+}
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

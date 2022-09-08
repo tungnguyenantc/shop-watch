@@ -20,10 +20,23 @@
     <div class="row">
         <div class="col mb-5">
             <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'shop:home' %}" class="btn btn-outline-primary btn-lg" style="line-height: 0.6;">
+                            &#8592;
+    
+                        </a>
+                        
+                        <a href="{% url 'order' %}" class="order btn btn-outline-primary btn-lg " style="line-height: 0.6;">&#8594;</a>
+                    </div>
+                    
+                </div>
 
 
 
                 <div class="card-body">
+
+
                     <h3>Shopping Cart: </h3>
 
                     <table class="table">
@@ -51,7 +64,7 @@
                                 </td>
                                 <td class='price'>{{ cart.price|floatformat:0|intcomma }}</td>
                                 <td class='money'>{{ cart.total_price }}</td>
-                                <td><i class="fa-solid fa-trash text-danger"></i></td>
+                                <td ><i class="fa-solid fa-trash text-danger removeCart"></i></td>
                             </tr>
                             {% endfor %}
 
@@ -63,7 +76,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     <h3 class='text-right'>Total:
-                        <span class="badge badge-primary">{{cart.get_total_price }}</span> 
+                        <span class="badge badge-primary">{{cart.get_total_price }}</span>
                     </h3>
                 </div>
             </div>
@@ -75,4 +88,5 @@
 {% block js %}
 <script src="{% static 'js/nav.js' %}"></script>
 <script src="{% static 'js/cart_update.js' %}"></script>
+<script src="{% static 'js/cart_remove.js' %}"></script>
 {% endblock js %}

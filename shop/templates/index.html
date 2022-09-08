@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+{% load easy_thumbnails_tags %}
 {% load humanize %}
 
 {% block message %}
@@ -26,6 +26,7 @@
         <div class="col-md-4 mb-3">
           <div class="card text-left">
             <img class="card-img-top" src="{{ product.image.url }}" alt="">
+            
             <div class="card-body" data-id={{product.id}}>
               <h6 class="card-title text-center">
                 <a href="{% url 'cart-detail' product.id %}">
@@ -33,7 +34,7 @@
                 </a>
  
               </h6>
-              <p class="card-text text-center text-danger">{{ product.price|intcomma }} đ</p>
+              <p class="price_index card-text text-center text-danger">{{ product.price }}</p>
               <button type='button' class="btn btn-outline-primary btn-block">Add To Cart</button>
             </div>
           </div>

@@ -7,6 +7,8 @@ name = "pypi"
 django = "*"
 pillow = "*"
 python-benedict = "*"
+easy-thumbnails = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 autopep8 = "*"

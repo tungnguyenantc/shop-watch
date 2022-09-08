@@ -7,6 +7,10 @@ const decrement = document.querySelector(".decrement");
 const moneys = document.getElementsByClassName("money");
 const prices = document.getElementsByClassName("price");
 
+totalCart.textContent == "0"
+  ? document.querySelector(".order").classList.add("d-none")
+  : null;
+
 function ressetCart() {
   const cartCurrent = Number(cartCurrentcy.innerText.split(".")[0]);
   cartCurrentcy.innerText = new Intl.NumberFormat("vi-VN", {
